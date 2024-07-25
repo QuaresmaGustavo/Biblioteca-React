@@ -2,17 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Login from './Components/Login.jsx';
-import Home from './Components/Home.jsx';
+import Login from './Login.jsx';
+import Home from './Home.jsx';
+import Card from './Components/Card.jsx';
+import Cadastrar from './Components/Cadastro.jsx'
+import CadastroUsuario from './Components/UsuarioCadastro.jsx';
+import CadastroItem from './Components/ItemCadastro.jsx';
 import './index.css';
 
 const router = createBrowserRouter([
   {path: "/", element: <Login/>},
-  {path: "/home", element: <Home/>},
-  /*{path: "/cadastro", element: <Cadastro/>, children: [
-    {path: "/item", element: <cadastrarItem/>},
-    {path: "/usuario", element: <cadastrarUsuario/>},
-  ]}*/
+  {path: "home", element: <Home/>, children: [
+    {path: "", element: <Card/>},
+    {path: "cadastrar", element: <Cadastrar/>}
+  ]}
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
