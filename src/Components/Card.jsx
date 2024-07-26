@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import Item from './Item.jsx'
+import { Link } from "react-router-dom";
 
 const Card = () => {
 
@@ -27,13 +29,13 @@ const Card = () => {
                 {itens.map((item) => (
                     <div key={item.id} className="w-80 p-2 border-2 rounded-md shadow-md">
                         <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                            <a href='/item'>
+                            <Link to={'./item?id='+item.id}>
                                 <img
                                     alt={item.imagem}
                                     src={item.imagem}
                                     className="h-full w-full object-center lg:h-full lg:w-full"
                                 />
-                            </a>
+                            </Link>
                         </div>
                         <div className="mt-4 flex justify-between">
                             <div>

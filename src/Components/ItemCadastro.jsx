@@ -3,14 +3,13 @@ import { PhotoIcon } from '@heroicons/react/24/solid'
 
 export default function ItemCadastro() {
 
-  const [inputData, setInputData] = useState('');
+  const [publicacao, setPublicacao] = useState('');
   const [nome, setNome] = useState('');
   const [categoria, setCategoria] = useState('');
   const [editora, setEditora] = useState('');
   const [descricao, setDescricao] = useState('');
   const [imagem, setImagem] = useState('');
   const [numPag, setNumPag] = useState('');
-  const [publicacao, setPublicacao] = useState('');
 
   const valueInputNome = (e) => {
     setNome(e.target.value);
@@ -38,10 +37,6 @@ export default function ItemCadastro() {
 
   const valueInputPublicacao = (e) => {
     setPublicacao(e.target.value);
-  };
-
-  const valueInputData = (e) => {
-    setInputData(e.target.value);
   };
 
   const cadastrar = () => {
@@ -145,8 +140,8 @@ export default function ItemCadastro() {
                 <input 
                  type="date" 
                  placeholder='Data' 
-                 value={inputData} 
-                 onChange={valueInputData}
+                 value={publicacao} 
+                 onChange={valueInputPublicacao}
                  className="block w-full p-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                  />
               </div>
