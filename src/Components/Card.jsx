@@ -9,7 +9,13 @@ const Card = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8080/item/todos')
+                const response = await fetch('http://localhost:8080/item/todos', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+                    },
+                })
                 if (response !== undefined) {
                     const data = await response.json();
                     setItens(data);
@@ -29,7 +35,7 @@ const Card = () => {
                 {itens.map((item) => (
                     <div key={item.id} className="w-80 p-2 border-2 rounded-md shadow-md">
                         <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                            <Link to={'./item?id='+item.id}>
+                            <Link to={'./item?id=' + item.id}>
                                 <img
                                     alt={item.imagem}
                                     src={item.imagem}
