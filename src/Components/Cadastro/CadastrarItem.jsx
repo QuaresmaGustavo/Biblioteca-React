@@ -18,34 +18,6 @@ export default function ItemCadastro() {
   const [imagem, setImagem] = useState('');
   const [numPag, setNumPag] = useState('');
 
-  const valueInputNome = (e) => {
-    setNome(e.target.value);
-  };
-
-  const valueInputCategoria = (e) => {
-    setCategoria(e.target.value);
-  };
-
-  const valueInputEditora = (e) => {
-    setEditora(e.target.value);
-  };
-
-  const valueInputDescricao = (e) => {
-    setDescricao(e.target.value);
-  };
-
-  const valueInputImagem = (e) => {
-    setImagem(e.target.value);
-  };
-
-  const valueInputNumPag = (e) => {
-    setNumPag(e.target.value);
-  };
-
-  const valueInputPublicacao = (e) => {
-    setPublicacao(e.target.value);
-  };
-
   const cadastrar = () => {
     const fetchData = async () => {
       if (nome != '') {
@@ -92,7 +64,7 @@ export default function ItemCadastro() {
                 <input
                   type="text"
                   value={nome}
-                  onChange={valueInputNome}
+                  onChange={(e) => setNome(e.target.value)}
                   className="block flex-1 border-0 bg-transparent p-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -107,7 +79,7 @@ export default function ItemCadastro() {
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
                 <select
                   value={categoria}
-                  onChange={valueInputCategoria}
+                  onChange={(e) => setCategoria(e.target.value)}
                   className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
                 >
                   <option>-</option>
@@ -118,6 +90,7 @@ export default function ItemCadastro() {
                   <option>Fantasia</option>
                   <option>Ficção</option>
                   <option>Negócios</option>
+                  <option>Estudo de línguas estrangeiras</option>
                 </select>
               </div>
             </div>
@@ -131,7 +104,7 @@ export default function ItemCadastro() {
               <input
                 type="text"
                 value={editora}
-                onChange={valueInputEditora}
+                onChange={(e) => setEditora(e.target.value)}
                 className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
               />
             </div>
@@ -145,7 +118,7 @@ export default function ItemCadastro() {
               <input
                 type="text"
                 value={numPag}
-                onChange={valueInputNumPag}
+                onChange={(e) => setNumPag(e.target.value)}
                 className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
               />
             </div>
@@ -160,7 +133,7 @@ export default function ItemCadastro() {
                 type="date"
                 placeholder='Data'
                 value={publicacao}
-                onChange={valueInputPublicacao}
+                onChange={(e) => setPublicacao(e.target.value)}
                 className="block w-full p-2 rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
               />
             </div>
@@ -174,7 +147,7 @@ export default function ItemCadastro() {
               <textarea
                 rows={10}
                 value={descricao}
-                onChange={valueInputDescricao}
+                onChange={(e) => setDescricao(e.target.value)}
                 className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -194,7 +167,7 @@ export default function ItemCadastro() {
                     <span>Baixar arquivo</span>
                     <input type="file"
                       value={imagem}
-                      onChange={valueInputImagem}
+                      onChange={(e) => setImagem(e.target.value)}
                       className="sr-only" />
                   </label>
                 </div>

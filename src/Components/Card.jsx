@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react"
-import Item from './Item.jsx'
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
-const Card = () => {
+export default function Card () {
+
+    const valorPesquisado = useOutletContext();
 
     const [itens, setItens] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8080/item/todos', {
+                const response = await fetch(valorPesquisado != '' ? `http://localhost:8080/item/nome/${valorPesquisado}`: 'http://localhost:8080/item/todos', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -19,15 +20,17 @@ const Card = () => {
                 if (response !== undefined) {
                     const data = await response.json();
                     setItens(data);
+                    console.log(`card: ${valorPesquisado}`);
                 } else {
                     console.error('Resposta da API está indefinida');
                 }
             } catch (error) {
+                
                 console.error('Erro na API', error)
             }
         }
         fetchData();
-    }, []);
+    }, [valorPesquisado]);
 
     return (
         <div className="bg-white">
@@ -58,5 +61,3 @@ const Card = () => {
         </div>
     )
 }
-
-export default Card

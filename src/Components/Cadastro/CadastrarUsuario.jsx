@@ -36,7 +36,7 @@ export default function UsuarioCadastro() {
     const fetchData = async () => {
       if (nome && login && senha && origem != '') {
         try {
-          const response = await fetch('http://localhost:8080/usuario/cadastro', {
+          const response = await fetch('http://localhost:8080/usuario/cadastrar', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

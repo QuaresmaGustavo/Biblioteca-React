@@ -2,8 +2,8 @@ import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/r
 import { Link, useNavigate } from 'react-router-dom'
 
 const navegacao = [
-  { name: 'Home', href: ''},
-  { name: 'Administrador', href: 'admin'},
+  { name: 'Home', href: '' },
+  { name: 'Administrador', href: 'admin' },
 ]
 
 function classNames(...classes) {
@@ -14,14 +14,14 @@ export default function Cabecalho() {
 
   const navegation = useNavigate();
 
-  function sair(){
+  function sair() {
     sessionStorage.removeItem('token');
     navegation("/");
   }
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className="mx-32 max-w-full px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
@@ -31,7 +31,7 @@ export default function Cabecalho() {
                 className="h-8 w-auto"
               />
             </div>
-            <div className="hidden sm:ml-6 sm:block">
+            <div className="hidden w-full sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {navegacao.map((item) => (
                   <Link
