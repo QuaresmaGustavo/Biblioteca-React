@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function ItemCadastro() {
 
   const navegacao = useNavigate();
+  const hoje = new Date().toISOString().split('T')[0];
 
   function cancelar(){
     navegacao("/home/admin")
@@ -135,6 +136,7 @@ export default function ItemCadastro() {
                 value={publicacao}
                 onChange={(e) => setPublicacao(e.target.value)}
                 className="block w-full p-2 rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
+                max={hoje}
               />
             </div>
           </div>

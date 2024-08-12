@@ -31,6 +31,7 @@ const Login = () => {
                     if (response.ok) {
                         const data = await response.json();
                         sessionStorage.setItem('token', data.token);
+                        sessionStorage.setItem('role', data.roleUsuario);
                         navegacao("/home");
                     }
                 } catch (error) {

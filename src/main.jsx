@@ -5,8 +5,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from './Login';
 import Item from './Components/Item'
 import Home from './Home';
-import DeletarUsuario from './Components/Modal/ModalDeleteUsuario'
-import DeletarItem from './Components/Modal/ModalDeleteItem'
 import ListaDeItens from './Components/ListaDeItens';
 import Admin from './Admin'
 import CadastrarUsuario from './Components/Cadastro/CadastrarUsuario'

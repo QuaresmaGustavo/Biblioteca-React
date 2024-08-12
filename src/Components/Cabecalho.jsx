@@ -1,18 +1,19 @@
 import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const navegacao = [
-  { name: 'Home', href: '' },
-  { name: 'Administrador', href: 'admin' },
-]
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Cabecalho() {
 
+  const role = sessionStorage.getItem('role')
   const navegation = useNavigate();
+
+  const navegacao = [
+    { name: 'Home', href: '' },
+    (role === "FUNCIONARIO") ? { name: 'Administrador', href: 'admin' } : null,
+  ].filter(Boolean); 
 
   function sair() {
     sessionStorage.removeItem('token');
@@ -26,8 +27,8 @@ export default function Cabecalho() {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
               <img
-                alt="Your Company"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                alt="Logo_icon"
+                src="https://cdn-icons-png.flaticon.com/512/2784/2784504.png"
                 className="h-8 w-auto"
               />
             </div>
@@ -53,14 +54,13 @@ export default function Cabecalho() {
 
             <Menu as="div" className="relative ml-3">
               <div>
-                <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                <MenuButton className="relative flex  bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">Abrir menu</span>
-                  <img
-                    alt="user_img"
-                    src=""
-                    className="h-8 w-8 rounded-full"
-                  />
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+                  </svg>
+
                 </MenuButton>
               </div>
               <MenuItems
