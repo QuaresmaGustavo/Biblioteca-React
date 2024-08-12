@@ -1,25 +1,13 @@
-//OK
-
 import { useState} from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
-const useQuery = () => {
-    return new URLSearchParams(useLocation().search);
-};
-
-export default function Example() {
-    const [open, setOpen] = useState(true);
-    const navegacao = useNavigate();
+export default function ModalDeleteItem({id}) {
+    const [visualizar, setVisualizar] = useState(true);
 
     function cancelar(){
-        navegacao('/home/admin');
+        setVisualizar(false);
     }
-
-  const query = useQuery();
-    const id = query.get('id');
 
     const excluir = () => {
         const fetchData = async () => {
@@ -32,7 +20,8 @@ export default function Example() {
                     },
                 })
                 if (response.ok) {
-                    navegacao('/home/admin');
+                  window.location.reload();
+                  setVisualizar(false);
                 } else {
                     console.error('Erro na response');
                 }
@@ -44,7 +33,7 @@ export default function Example() {
     };
 
   return (
-    <Dialog open={open} onClose={setOpen} className="relative z-10">
+    <Dialog open={visualizar} onClose={setVisualizar} className="relative z-10">
       <DialogBackdrop
         transition
         className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"

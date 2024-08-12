@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react"
-import { Link, useOutletContext } from "react-router-dom";
+import { Link} from "react-router-dom";
+import Buscar from './InputPesquisar'; 
 
-export default function Card () {
+export default function ListaDeItens () {
 
-    const valorPesquisado = useOutletContext();
+    const [valorPesquisado, setValorPesquisado] = useState('');
+    //const valorPesquisado = useOutletContext();
 
     const [itens, setItens] = useState([]);
 
@@ -20,7 +22,6 @@ export default function Card () {
                 if (response !== undefined) {
                     const data = await response.json();
                     setItens(data);
-                    console.log(`card: ${valorPesquisado}`);
                 } else {
                     console.error('Resposta da API está indefinida');
                 }
@@ -34,6 +35,7 @@ export default function Card () {
 
     return (
         <div className="bg-white">
+            <Buscar setValorPesquisado={setValorPesquisado}/>
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                 {itens.map((item) => (
                     <div key={item.id} className="w-80 p-2 border-2 rounded-md shadow-md">

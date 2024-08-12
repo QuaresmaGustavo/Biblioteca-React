@@ -7,7 +7,7 @@ import Item from './Components/Item'
 import Home from './Home';
 import DeletarUsuario from './Components/Modal/ModalDeleteUsuario'
 import DeletarItem from './Components/Modal/ModalDeleteItem'
-import Card from './Components/Card';
+import ListaDeItens from './Components/ListaDeItens';
 import Admin from './Admin'
 import CadastrarUsuario from './Components/Cadastro/CadastrarUsuario'
 import CadastrarItem from './Components/Cadastro/CadastrarItem'
@@ -19,16 +19,14 @@ import './index.css';
 const router = createBrowserRouter([
   {path: "/", element: <Login/>},
   {path: "home", element: <Home/>, children: [
-    {path: "", element: <Card/>},
+    {path: "", element: <ListaDeItens/>},
     {path: "item", element: <Item/>},
     {path: "admin", element: <Admin/>},
   ]},
   {path: "cadastrar_Usuario", element: <CadastrarUsuario/>},
   {path: "cadastrar_Item", element: <CadastrarItem/>},
   {path: "atualizar_Usuario", element: <AtualizarUsuario/>},
-  {path: "atualizar_Item", element: <AtualizarItem/>},
-  {path: "modal_usuario", element: <DeletarUsuario/>},
-  {path: "modal_item", element: <DeletarItem/>}
+  {path: "atualizar_Item", element: <AtualizarItem/>}
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
