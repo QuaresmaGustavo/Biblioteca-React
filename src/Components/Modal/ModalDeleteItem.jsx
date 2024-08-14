@@ -1,36 +1,30 @@
-import { useState} from 'react'
+import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
-export default function ModalDeleteItem({id}) {
-    const [visualizar, setVisualizar] = useState(true);
+export default function ModalDeleteItem({ id }) {
+  const [visualizar, setVisualizar] = useState(true);
 
-    function cancelar(){
-        setVisualizar(false);
-    }
-
-    const excluir = () => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`http://localhost:8080/item/${id}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
-                    },
-                })
-                if (response.ok) {
-                  window.location.reload();
-                  setVisualizar(false);
-                } else {
-                    console.error('Erro na response');
-                }
-            } catch (error) {
-                console.error('Erro na API', error)
-            }
+  const excluir = () => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/item/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+          },
+        })
+        if (response.ok) {
+          window.location.reload();
+          setVisualizar(false);
         }
-        fetchData();
-    };
+      } catch (error) {
+        console.error('Erro na API', error)
+      }
+    }
+    fetchData();
+  };
 
   return (
     <Dialog open={visualizar} onClose={setVisualizar} className="relative z-10">
@@ -52,11 +46,11 @@ export default function ModalDeleteItem({id}) {
                 </div>
                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                   <DialogTitle as="h3" className="text-base font-semibold leading-6 text-gray-900 uppercase font-bold text-xl">
-                    excluir item
+                    excluir item?
                   </DialogTitle>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Ao clicar em confirmar, todos os dados serão apagados e não será possivel recuperar os dados.
+                      Ao clicar em confirmar, todos os dados serão apagados e não será possivel recupera-los.
                     </p>
                   </div>
                 </div>
@@ -73,7 +67,7 @@ export default function ModalDeleteItem({id}) {
               <button
                 type="button"
                 data-autofocus
-                onClick={cancelar}
+                onClick={() => setVisualizar(false)}
                 className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
               >
                 Cancelar

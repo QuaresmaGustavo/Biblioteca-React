@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <>
             <Cabecalho/>
-            <div className='px-12'>
+            <div className='mx-32 mb-10'>
                 <Outlet/>
             </div>
         </>

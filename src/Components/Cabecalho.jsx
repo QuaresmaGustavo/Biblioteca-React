@@ -17,6 +17,7 @@ export default function Cabecalho() {
 
   function sair() {
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('role');
     navegation("/");
   }
 

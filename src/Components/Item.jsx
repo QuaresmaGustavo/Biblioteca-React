@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search);
@@ -37,10 +37,21 @@ export default function Item() {
 
     return (
         <div className="bg-white">
+            <div className="mt-4">
+                <Link to="/home">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                     fill="none" viewBox="0 0 24 24"
+                     stroke-width="1.5"
+                     stroke="currentColor"
+                     class="size-6 hover:scale-125 hover:duration-150">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                    </svg>
+                </Link>
+            </div>
             {item ? (
                 <div className="grid grid-cols-2 mx-20 pt-6">
                     <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
-                        <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
+                        <div className="h-5/6 aspect-w-3 hidden overflow-hidden rounded-lg lg:block shadow-md">
                             <img
                                 alt='Foto_item'
                                 src={item.imagem}

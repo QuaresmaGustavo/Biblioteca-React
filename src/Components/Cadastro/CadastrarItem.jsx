@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { PhotoIcon } from '@heroicons/react/24/solid'
 import { useNavigate } from 'react-router-dom';
 
 export default function ItemCadastro() {
@@ -7,7 +6,7 @@ export default function ItemCadastro() {
   const navegacao = useNavigate();
   const hoje = new Date().toISOString().split('T')[0];
 
-  function cancelar(){
+  function cancelar() {
     navegacao("/home/admin")
   }
 
@@ -83,7 +82,7 @@ export default function ItemCadastro() {
                   onChange={(e) => setCategoria(e.target.value)}
                   className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
                 >
-                  <option>-</option>
+                  <option className="hidden">-</option>
                   <option>Aventura</option>
                   <option>Biografia</option>
                   <option>Conto</option>
@@ -157,34 +156,24 @@ export default function ItemCadastro() {
 
           <div className="col-span-full">
             <label className="block text-sm font-medium leading-6 text-gray-900">
-              Adicionar foto
+              Adicionar URL da imagem
             </label>
-            <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-              <div className="text-center">
-                <PhotoIcon aria-hidden="true" className="mx-auto h-12 w-12 text-gray-300" />
-                <div className="mt-4 flex text-sm leading-6 text-gray-600">
-                  <label
-                    className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                  >
-                    <span>Baixar arquivo</span>
-                    <input type="file"
-                      value={imagem}
-                      onChange={(e) => setImagem(e.target.value)}
-                      className="sr-only" />
-                  </label>
-                </div>
-                <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF até 10MB</p>
-              </div>
+            <div className="mt-2">
+              <input type="text"
+                value={imagem}
+                onChange={(e) => setImagem(e.target.value)}
+                className="block w-full p-2 rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"
+               />
             </div>
           </div>
         </div>
       </div>
 
       <div className="mt-6 flex items-center justify-end gap-x-3">
-        <button type="button" 
+        <button type="button"
           className="block w-auto rounded-md bg-red-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
           onClick={cancelar}
-          >
+        >
           Cancelar
         </button>
         <button
