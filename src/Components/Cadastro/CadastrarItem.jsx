@@ -20,7 +20,7 @@ export default function ItemCadastro() {
 
   const cadastrar = () => {
     const fetchData = async () => {
-      if (nome != '') {
+      if (nome != '' & categoria != '' & editora != '' & descricao != '' & numPag != '' & publicacao != '') {
         try {
           const response = await fetch('http://localhost:8080/item/cadastrar', {
             method: 'POST',

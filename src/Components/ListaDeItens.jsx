@@ -53,7 +53,7 @@ export default function ListaDeItens() {
                                     <h3 className="text-gray-900 font-medium">
                                         {item.nome}
                                     </h3>
-                                    <p className="mt-1 text-sm text-gray-500">{item.editora}</p>
+                                    <p className="mt-1 text-sm text-gray-500">{item.tipo}</p>
                                 </div>
                                 <p className="text-sm font-medium text-gray-800">{item.numPagina}</p>
                             </div>
