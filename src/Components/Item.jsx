@@ -37,19 +37,19 @@ export default function Item() {
 
     return (
         <div className="bg-white">
-            <div className="mt-4">
-                <Link to="/home">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                     fill="none" viewBox="0 0 24 24"
-                     stroke-width="1.5"
-                     stroke="currentColor"
-                     class="size-6 hover:scale-125 hover:duration-150">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                    </svg>
-                </Link>
-            </div>
             {item ? (
                 <div className="grid grid-cols-2 mx-20 pt-6">
+                    <div className="absolute mt-4 w-8">
+                        <Link to="/home">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="size-6 hover:scale-125 hover:duration-150">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                            </svg>
+                        </Link>
+                    </div>
                     <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
                         <div className="h-5/6 aspect-w-3 hidden overflow-hidden rounded-lg lg:block shadow-md">
                             <img

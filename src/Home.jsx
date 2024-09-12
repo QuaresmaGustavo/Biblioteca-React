@@ -1,16 +1,40 @@
 import { Outlet } from 'react-router-dom'
 import Cabecalho from './Components/Cabecalho.jsx'
+import { useEffect, useState } from 'react';
 
 export default function Home() {
 
+    const [valorPesquisado, setValorPesquisado] = useState('');
+
+    /*useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch("http://localhost:8080/item/total", {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+                    },
+                })
+                if (response.ok) {
+                    const data = await response.json();
+                    sessionStorage.setItem("qtd_total_itens",data)
+                } else {
+                    console.error('Resposta da API está indefinida');
+                }
+            } catch (error) {
+                console.error('Erro na API', error)
+            }
+        }
+        fetchData();
+    }, []);*/
+
     return (
-        <div>
-            <div className='fixed inset-x-0 top-0'>
-                <Cabecalho />
+        <>
+            <Cabecalho setValorPesquisado={setValorPesquisado} />
+            <div className="mt-20">
+                <Outlet context={{ valorPesquisado }} />
             </div>
-            <div className='mx-32 mt-16 m-10'>
-                <Outlet />
-            </div>
-        </div>
+        </>
     )
 }

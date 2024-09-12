@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Login from './Login';
+import Login from './Components/PaginaLogin/Login';
 import Item from './Components/Item'
 import Home from './Home';
 import ListaDeItens from './Components/ListaDeItens';

@@ -4,15 +4,15 @@ import TabelaItem from './Components/Tabela/TabelaItem'
 
 export default function Admin() {
 
-    const [displayCadastroUsuario, setDisplayCadastroUsuario] = useState('hidden');
-    const [displayCadastroItem, setDisplayCadastroItem] = useState('hidden');
+    const [displayCadastroUsuario, setDisplayCadastroUsuario] = useState('block');
+    const [displayCadastroItem, setDisplayCadastroItem] = useState('block');
 
     function visualizarCadastroUsuario() {
-        setDisplayCadastroUsuario(displayAtual => displayAtual === 'hidden' ? 'block' : 'hidden');
+        setDisplayCadastroUsuario(displayAtual => displayAtual === 'block' ? 'hidden' : 'block');
     }
 
     function visualizarCadastroItem() {
-        setDisplayCadastroItem(displayAtual => displayAtual === 'hidden' ? 'block' : 'hidden');
+        setDisplayCadastroItem(displayAtual => displayAtual === 'block' ? 'hidden' : 'block');
     }
 
     return (
@@ -22,7 +22,7 @@ export default function Admin() {
                     className='bg-white hover:bg-gray-100 text-gray-800 font-semibold uppercase w-96 py-2 px-4 border border-gray-400 rounded shadow'>
                     Usuarios
                 </button>
-                <div className="w-full">
+                <div className="w-full border-b-gray">
                     <div className={displayCadastroUsuario}>
                         <TabelaUsuario />
                     </div>
