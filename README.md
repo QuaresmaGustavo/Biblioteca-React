@@ -1,8 +1,10 @@
-# React + Vite
+# Sobre o projeto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é uma biblioteca online desenvolvida com React e Vite, utilizando Tailwind CSS para criar o design da aplicação. O frontend se integra com um backend em Java, criado por mim com Spring Boot, para explorar, adicionar e gerenciar livros e usuários, oferecendo uma experiência completa de biblioteca online.
 
-Currently, two official plugins are available:
+# Tecnologias usadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  * React + Vite
+  * Tailwind CSS
+
+![image](https://github.com/user-attachments/assets/b524bcd1-e022-47cf-8d20-d3544de2592e)
