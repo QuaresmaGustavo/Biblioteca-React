@@ -7,6 +7,7 @@ import Cadastro from './Components/PaginaLogin/Cadastro';
 import MinhaLista from './Components/MinhaLista/Lista';
 import Item from './Components/Item';
 import Home from './Home';
+import LerMais from './Components/LerMais';
 import ListaDeItens from './Components/ListaDeItens';
 import Admin from './Admin';
 import CadastrarUsuario from './Components/Cadastro/CadastrarUsuario'
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
     {path: "MinhaLista", element: <MinhaLista/>},
     {path: "admin", element: <Admin/>},
   ]},
+  {path: "leitura", element: <LerMais/>},
   {path: "cadastrar_Usuario", element: <CadastrarUsuario/>},
   {path: "cadastrar_Item", element: <CadastrarItem/>},
   {path: "atualizar_Usuario", element: <AtualizarUsuario/>},
