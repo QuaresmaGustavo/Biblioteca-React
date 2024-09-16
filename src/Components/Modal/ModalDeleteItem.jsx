@@ -16,7 +16,6 @@ export default function ModalDeleteItem({ id }) {
           },
         })
         if (response.ok) {
-          window.location.reload();
           setVisualizar(false);
         }
       } catch (error) {

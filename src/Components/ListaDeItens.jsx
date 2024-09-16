@@ -6,10 +6,10 @@ export default function ListaDeItens() {
 
     const { valorPesquisado } = useOutletContext();
 
-    console.log(valorPesquisado);
-
     const [itens, setItens] = useState([]);
     const [pagina, setPagina] = useState(0);
+    const [MaxPagina, setMaxPagina] = useState(0);
+    const totalPaginas = Math.ceil(MaxPagina / 6);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,10 +25,12 @@ export default function ListaDeItens() {
                 })
                 if (response.ok && valorPesquisado != '') {
                     const data = await response.json();
-                    setItens(data);
+                    setItens(data.item);
+                    setMaxPagina(data.total)
                 } else {
                     const data = await response.json();
-                    setItens(data.content);
+                    setItens(data.item);
+                    setMaxPagina(data.total)
                 }
             } catch (error) {
 
@@ -39,20 +41,18 @@ export default function ListaDeItens() {
     }, [valorPesquisado, pagina]);
 
     return (
-        <div className="mx-32 mt-16">
+        <div className="mx-32 mt-24">
             <div className="mt-12 mb-4 grid grid-cols-1 gap-x-6 gap-y-10 justify-items-center sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                 {itens != null ? (
                     itens.map((item) => (
                         <Link to={'./item?id=' + item.id}>
-                            <div key={item.id} className="w-80 p-2 border-2 rounded-md shadow-md hover:scale-105 hover:duration-100">
-                                <div className="flex justify-center items-center aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-72">
-
+                            <div key={item.id} className="w-80 p-2 border-2 rounded-md shadow-md bg-gray-200 hover:scale-105 hover:duration-100">
+                                <div className="flex justify-center items-center aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white lg:aspect-none lg:h-72">
                                     <img
                                         alt={item.imagem}
                                         src={item.imagem}
-                                        className="h-64 w-auto"
+                                        className="h-64 w-auto border shadow-md"
                                     />
-
                                 </div>
                                 <div className="mt-4 flex justify-between">
                                     <div>
@@ -84,7 +84,7 @@ export default function ListaDeItens() {
                             </button>
 
                             <button type="button"
-                                onClick={() => { setPagina(pagina + 1) }}
+                                onClick={() => { setPagina(pagina < totalPaginas-1 ? pagina + 1 : pagina ) }}
                                 className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                             >
                                 <ChevronRightIcon aria-hidden="true" className="h-5 w-5" />

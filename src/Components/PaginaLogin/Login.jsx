@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+export default function Login(){
 
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
@@ -24,6 +24,7 @@ const Login = () => {
                         const data = await response.json();
                         sessionStorage.setItem('token', data.token);
                         sessionStorage.setItem('role', data.roleUsuario);
+                        sessionStorage.setItem('id', data.idUsuario);
                         navegacao("/home");
                     }
                 } catch (error) {
@@ -86,7 +87,7 @@ const Login = () => {
                         <div>
                             <button
                                 type='button'
-                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-md shadow-indigo-600/50 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-md shadow-blue-600/50 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 onClick={entrar}
                             >
                                 Entrar
@@ -94,13 +95,11 @@ const Login = () => {
                         </div>
                     </form>
                     <p className="flex justify-center mt-4">Não possui uma conta?
-                        <a href="#" className="font-bold text-violet-800 ml-2">Cadastrar</a>
+                        <a href="/cadastro" className="font-bold text-violet-800 ml-2">Cadastrar</a>
                     </p>
                 </div>
             </div>
         </div>
     )
-}
-
-export default Login;
+};
 

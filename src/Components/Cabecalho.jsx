@@ -13,19 +13,21 @@ export default function Cabecalho({setValorPesquisado}) {
 
   const navegacao = [
     { name: 'Home', href: '' },
+    { name: 'Minha Lista', href: 'minhaLista' },
     (role === "FUNCIONARIO") ? { name: 'Administrador', href: 'admin' } : null,
   ].filter(Boolean); 
 
   function sair() {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('role');
+    sessionStorage.removeItem('id');
     navegation("/");
   }
 
   return (
     <Disclosure as="nav" className="bg-blue-300 fixed inset-x-0 top-0 z-50">
       <div className="mx-32 max-w-full px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+        <div className="relative flex h-16 items-center justify-center">
           <div className="flex flex-1 items-center justify-center">
             <div className="flex flex-shrink-0 items-center">
               <img
@@ -34,13 +36,12 @@ export default function Cabecalho({setValorPesquisado}) {
                 className="h-8 w-auto"
               />
             </div>
-            <div className="w-full sm:ml-6 flex items-center">
-              <div className="flex space-x-4">
+            <div className="flex items-center w-full sm:ml-6">
+              <div className="flex space-x-4 basis-4/12">
                 {navegacao.map((item) => (
                   <Link
                     key={item.name}
                     to={item.href}
-                    aria-current={item.current ? 'page' : undefined}
                     className={classNames(
                       item.current ? 'bg-gray-900 text-white' : 'text-black hover:bg-blue-500 hover:text-white',
                       'rounded-md px-3 py-2 text-sm font-medium text-black'

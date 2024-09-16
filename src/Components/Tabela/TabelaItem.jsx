@@ -8,6 +8,8 @@ export default function TabelaItem() {
     const [id, setIdItem] = useState('');
     const [estadoModal, setEstadoModal] = useState(false);
     const [pagina, setPagina] = useState(0);
+    const [MaxPagina, setMaxPagina] = useState(0);
+    const totalPaginas = Math.ceil(MaxPagina / 4);
 
     const AtivarModal = (id) => {
         setIdItem(id);
@@ -17,7 +19,7 @@ export default function TabelaItem() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/item/todos?pagina=${pagina}&quantidade=3`, {
+                const response = await fetch(`http://localhost:8080/item/todos?pagina=${pagina}&quantidade=4`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -26,7 +28,8 @@ export default function TabelaItem() {
                 })
                 if (response.ok) {
                     const data = await response.json();
-                    setItem(data.content);
+                    setItem(data.item);
+                    setMaxPagina(data.total);
                 }
             } catch (error) {
                 console.error('Erro na API', error)
@@ -125,7 +128,7 @@ export default function TabelaItem() {
                                 </button>
 
                                 <button type="button"
-                                    onClick={() => { setPagina(pagina + 1) }}
+                                    onClick={() => { setPagina(pagina < totalPaginas-1 ? pagina + 1 : pagina ) }}
                                     className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
                                 >
                                     <ChevronRightIcon aria-hidden="true" className="h-5 w-5" />

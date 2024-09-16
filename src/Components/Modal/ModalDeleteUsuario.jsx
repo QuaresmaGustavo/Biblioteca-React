@@ -16,7 +16,6 @@ export default function ModalDeleteUsuario({ id }) {
           },
         })
         if (response.ok) {
-          window.location.reload();
           setVisualizar(false);
         }
       } catch (error) {

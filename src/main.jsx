@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Login from './Components/PaginaLogin/Login';
-import Item from './Components/Item'
+import Cadastro from './Components/PaginaLogin/Cadastro';
+import MinhaLista from './Components/MinhaLista/Lista';
+import Item from './Components/Item';
 import Home from './Home';
 import ListaDeItens from './Components/ListaDeItens';
-import Admin from './Admin'
+import Admin from './Admin';
 import CadastrarUsuario from './Components/Cadastro/CadastrarUsuario'
 import CadastrarItem from './Components/Cadastro/CadastrarItem'
 import AtualizarUsuario from './Components/Atualizar/AtualizarUsuario'
@@ -16,9 +18,11 @@ import './index.css';
 
 const router = createBrowserRouter([
   {path: "/", element: <Login/>},
+  {path: "cadastro", element: <Cadastro/>},
   {path: "home", element: <Home/>, children: [
     {path: "", element: <ListaDeItens/>},
     {path: "item", element: <Item/>},
+    {path: "MinhaLista", element: <MinhaLista/>},
     {path: "admin", element: <Admin/>},
   ]},
   {path: "cadastrar_Usuario", element: <CadastrarUsuario/>},

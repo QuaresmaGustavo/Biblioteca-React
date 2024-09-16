@@ -1,13 +1,13 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Login = () => {
-
+export default function Login() {
     const [nome, setNome] = useState('');
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
+    const navegacao = useNavigate();
 
-    const cadastrar = () => {
-        const fetchData = async () => {
+    const cadastrar = async () => {
             if (nome && login && senha != '') {
                 try {
                     const response = await fetch('http://localhost:8080/usuario/cadastrar', {
@@ -19,11 +19,12 @@ const Login = () => {
                             nome: nome,
                             login: login,
                             senha: senha,
-                            status: USUARIO
+                            status: "USUARIO"
                         })
                     })
                     if (response.ok) {
                         alert("Usuario Cadastrado com sucesso!");
+                        navegacao("/");
                     }
                 } catch (error) {
                     console.log("erro na requisição " + error)
@@ -31,13 +32,22 @@ const Login = () => {
             } else {
                 alert("Os campos não podem estar vazios")
             }
-        }
-        fetchData();
-    };
+        };
 
     return (
         <div className="grid grid-cols-3 gap-4 place-content-center w-screen h-screen px-6 py-12 bg-blue-300">
-            <div className="col-start-2 m-20 py-6 shadow-md border rounded-md border-gray-500 bg-white">
+            <div className="col-start-2 m-20 pt-3 pb-6 shadow-md border rounded-md border-gray-500 bg-white">
+                <div className="relative top-0 w-8 ml-2">
+                    <Link to="/">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="size-6 hover:scale-125 hover:duration-150">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                        </svg>
+                    </Link>
+                </div>
                 <div className="grid grid-cols-6 sm:mx-auto sm:w-full sm:max-w-sm">
                     <img
                         alt="Your Company"
@@ -60,10 +70,9 @@ const Login = () => {
                             </div>
                             <div className="mt-2">
                                 <input
-                                    type="password"
-                                    required
+                                    type="text"
                                     className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-500 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                                    value={senha} onChange={(e) => setNome(e.target.value)}
+                                    value={nome} onChange={(e) => setNome(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -76,10 +85,9 @@ const Login = () => {
                             </div>
                             <div className="mt-2">
                                 <input
-                                    type="password"
-                                    required
+                                    type="text"
                                     className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-500 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                                    value={senha} onChange={(e) => setLogin(e.target.value)}
+                                    value={login} onChange={(e) => setLogin(e.target.value)}
                                 />
                             </div>
                         </div>
@@ -93,7 +101,6 @@ const Login = () => {
                             <div className="mt-2">
                                 <input
                                     type="password"
-                                    required
                                     className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-500 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                                     value={senha} onChange={(e) => setSenha(e.target.value)}
                                 />
@@ -103,7 +110,7 @@ const Login = () => {
                         <div>
                             <button
                                 type='button'
-                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-md shadow-indigo-600/50 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-md shadow-blue-600/50 hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 onClick={cadastrar}
                             >
                                 Cadastrar
@@ -115,5 +122,3 @@ const Login = () => {
         </div>
     )
 }
-
-export default Login;

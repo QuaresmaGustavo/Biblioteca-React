@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { PhotoIcon } from '@heroicons/react/24/solid';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const useQuery = () => {
@@ -24,34 +23,6 @@ export default function ItemCadastro() {
   const [descricao, setDescricao] = useState('');
   const [imagem, setImagem] = useState('');
   const [numPag, setNumPag] = useState('');
-
-  const valueInputNome = (e) => {
-    setNome(e.target.value);
-  };
-
-  const valueInputCategoria = (e) => {
-    setCategoria(e.target.value);
-  };
-
-  const valueInputEditora = (e) => {
-    setEditora(e.target.value);
-  };
-
-  const valueInputDescricao = (e) => {
-    setDescricao(e.target.value);
-  };
-
-  const valueInputImagem = (e) => {
-    setImagem(e.target.value);
-  };
-
-  const valueInputNumPag = (e) => {
-    setNumPag(e.target.value);
-  };
-
-  const valueInputPublicacao = (e) => {
-    setPublicacao(e.target.value);
-  };
 
   const confirmar = () => {
     const fetchData = async () => {

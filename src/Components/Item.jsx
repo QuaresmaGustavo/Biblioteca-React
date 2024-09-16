@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLocation, Link } from 'react-router-dom';
+import BtnAdicionarMinhaLista from './MinhaLista/AdiconarItem';
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search);
@@ -36,7 +37,7 @@ export default function Item() {
     }, [id]);
 
     return (
-        <div className="bg-white">
+        <div className="bg-white h-full">
             {item ? (
                 <div className="grid grid-cols-2 mx-20 pt-6">
                     <div className="absolute mt-4 w-8">
@@ -103,6 +104,7 @@ export default function Item() {
                                 </div>
                             </div>
                         </div>
+                        <BtnAdicionarMinhaLista id={id}/>
                     </div>
                 </div>
             ) : (
